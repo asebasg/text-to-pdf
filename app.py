@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+from reportlab.lib.utils import simpleSplit
 import io
 
 app = Flask(__name__)
@@ -11,7 +12,10 @@ def index():
 
 @app.route('/download', methods=['POST'])
 def download_pdf():
-    text = request.form.get('text', '')
+    text = request.form.get('text_content', '')
+    
+    if not text.strip():
+        return "No se proporcionó texto", 400
     
     # Crear PDF en memoria
     buffer = io.BytesIO()
@@ -20,16 +24,20 @@ def download_pdf():
 
     # Configurar fuente y posición
     c.setFont("Helvetica", 12)
-    y = height - 40  # Empezar desde la parte superior
+    y = height - 50
+    max_width = width - 100  # Margen de 50px a cada lado
 
-    # Dividir el texto en líneas para que quepa en el PDF
+    # Dividir el texto en líneas y ajustar al ancho
     lines = text.split('\n')
     for line in lines:
-        # Si la línea es muy larga, podrías dividirla más (opcional)
-        c.drawString(40, y, line[:100])  # Limitar a 100 caracteres por línea
-        y -= 15
-        if y < 40:  # Nueva página si es necesario (opcional, aquí no se implementa)
-            break
+        # Dividir líneas largas
+        wrapped_lines = simpleSplit(line, "Helvetica", 12, max_width)
+        for wrapped_line in wrapped_lines:
+            if y < 50:
+                c.showPage()
+                y = height - 50
+            c.drawString(50, y, wrapped_line)
+            y -= 20
 
     c.save()
     buffer.seek(0)
