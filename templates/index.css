@@ -1,0 +1,114 @@
+/* ====== Reset y estructura ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.main {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #7b2ff7, #00c6ff);
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ====== Contenedor principal ====== */
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== Títulos e imagen ====== */
+.title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+.subtitle {
+    margin: 0.5rem 0 2rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.imagen {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 0 12px rgba(255,255,255,0.5);
+    transition: transform 0.4s ease;
+}
+
+.imagen:hover {
+    transform: scale(1.1);
+}
+
+/* ====== Formulario ====== */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.campoTexto {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    resize: none;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campoTexto:focus {
+    background-color: rgba(255, 255, 255, 0.25);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* ====== Botón ====== */
+.boton {
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    background-color: #ffffff;
+    color: #222;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+}
+
+.boton:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}

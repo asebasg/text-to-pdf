@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Convertir Texto a PDF</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body class="main">
+    <div class="container">
+        <h1 class="title">Convertir Texto a PDF</h1>
+        <img class="imagen" src="https://i.pinimg.com/736x/60/8a/7d/608a7d2de0cf6898c3869b116c4231be.jpg" alt="Mort" />
+        <h3 class="subtitle">Hazlo por Mort 🐧</h3>
+
+        <form method="POST" action="/download" class="formulario">
+            <label for="text_content" class="label">
+                Ingrese su texto para convertirlo en PDF:
+            </label>
+            <textarea id="text_content" name="text_content" class="campoTexto" placeholder="Escribe aquí tu texto..."></textarea>
+            <button class="boton" type="submit">Descargar PDF</button>
+        </form>
+    </div>
+</body>
+</html>
