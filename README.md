@@ -1,180 +1,166 @@
-# Text-to-PDF
+# PDF Editor - Convertidor de Texto a PDF
 
-## Descripción general
+## 📋 Descripción
 
-Esta aplicación web permite a los usuarios convertir texto en archivos PDF. Está construida con Flask como framework backend y utiliza ReportLab para generar documentos PDF. La interfaz está desarrollada con HTML, CSS y Bootstrap.
+Una aplicación web simple y elegante que permite a los usuarios convertir texto plano en documentos PDF. Desarrollada con Flask como backend y una interfaz moderna usando HTML, CSS y Bootstrap. Utiliza ReportLab para la generación de PDFs de alta calidad.
 
-## Requisitos previos
+## ✨ Características
 
-Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
+- **Conversión de Texto a PDF**: Transforma cualquier texto en un documento PDF descargable.
+- **Interfaz Moderna**: Diseño responsivo con efecto glassmorphism y tipografía Poppins.
+- **Validación de Datos**: Verifica que se proporcione texto antes de generar el PDF.
+- **Manejo de Texto Multilínea**: Soporta saltos de línea y ajuste automático de texto.
+- **Configuración Personalizable**: Fácil modificación de fuentes, márgenes y tamaños de página.
+- **Generación en Memoria**: Los PDFs se crean en memoria para mayor eficiencia.
 
-1. **Python 3.7 o superior**
+## 🛠️ Tecnologías Utilizadas
 
-   - Verifica tu versión ejecutando:
-     ```bash
-     python --version
-     ```
+- **Backend**: Flask (Python)
+- **Generación de PDF**: ReportLab
+- **Frontend**: HTML5, CSS3, Bootstrap 5.3
+- **Fuentes**: Google Fonts (Poppins)
+- **Iconos**: Bootstrap Icons
 
-2. **pip** (gestor de paquetes de Python)
-   - Normalmente viene incluido con Python, verifica con:
-     ```bash
-     pip --version
-     ```
+## 📋 Requisitos Previos
 
-## Instalación del proyecto
+- Python 3.7 o superior
+- pip (gestor de paquetes de Python)
 
-### 1. Clonar o descargar el repositorio
+## 🚀 Instalación y Configuración
 
-Si usas git:
+### 1. Clonar el Repositorio
 
 ```bash
 git clone <url-del-repositorio>
 cd pdf-editor
 ```
 
-O descarga y extrae el archivo ZIP del proyecto en una carpeta local.
-
-### 2. Crear un entorno virtual (opcional pero recomendado)
+### 2. Crear Entorno Virtual (Recomendado)
 
 ```bash
 python -m venv venv
 ```
 
-Activar el entorno virtual:
+**Activar entorno virtual:**
 
-En Windows:
+- **Windows:**
+  ```bash
+  venv\Scripts\activate
+  ```
+
+- **macOS/Linux:**
+  ```bash
+  source venv/bin/activate
+  ```
+
+### 3. Instalar Dependencias
 
 ```bash
-venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-En macOS/Linux:
-
-```bash
-source venv/bin/activate
-```
-
-### 3. Instalar las dependencias
-
-El proyecto requiere las siguientes librerías:
-
-- Flask
-- ReportLab
-
-Instala todas las dependencias ejecutando:
+O instalar manualmente:
 
 ```bash
 pip install flask reportlab
 ```
 
-## Estructura del proyecto
+## 📁 Estructura del Proyecto
 
 ```
 pdf-editor/
 │
-├── app.py              # Aplicación principal Flask
-├── templates/
-│   └── index.html      # Plantilla HTML principal
-└── static/
-    └── index.css       # Archivo CSS personalizado (si existe)
+├── app.py                 # Aplicación principal Flask
+├── requirements.txt       # Dependencias del proyecto
+├── README.md             # Este archivo
+│
+└── templates/
+    ├── index.html        # Plantilla principal
+    └── index.css         # Estilos CSS personalizados
 ```
 
-## Ejecutar la aplicación
+## ▶️ Uso
 
-Una vez instaladas las dependencias, puedes iniciar la aplicación con:
+### Ejecutar la Aplicación
 
 ```bash
 python app.py
 ```
 
-Por defecto, la aplicación se ejecutará en `http://127.0.0.1:5000/`.
+La aplicación estará disponible en: `http://127.0.0.1:5000`
 
-Verás una salida similar a:
+### Cómo Usar
 
+1. Abre tu navegador y visita `http://127.0.0.1:5000`
+2. Ingresa el texto que deseas convertir en el área de texto
+3. Haz clic en "📄 Descargar PDF"
+4. El archivo PDF se descargará automáticamente
+
+## ⚙️ Configuración del PDF
+
+En `app.py`, puedes modificar los siguientes parámetros en la función `download_pdf()`:
+
+```python
+# Tamaño de página
+pagesize=letter
+
+# Fuente y tamaño
+c.setFont("Helvetica", 12)
+
+# Márgenes
+max_width = width - 100  # 50px a cada lado
+
+# Posición inicial
+y = height - 50
 ```
- * Running on http://127.0.0.1:5000
- * Debug mode: on
-```
 
-## Uso de la aplicación
+## 🔧 Personalización
 
-1. Abre tu navegador web y visita `http://127.0.0.1:5000`
-2. Verás la interfaz con un campo de texto
-3. Ingresa el texto que deseas convertir a PDF
-4. Haz clic en el botón "📄 Descargar PDF"
-5. El navegador iniciará la descarga del archivo PDF generado
+### Modificar Estilos
 
-## Funcionalidades principales
+Edita `templates/index.css` para cambiar la apariencia visual.
 
-### Generación de PDF
+### Cambiar la Interfaz
 
-- Convierte texto plano en documentos PDF
-- Manejo automático de saltos de línea y páginas
-- Fuente Helvetica tamaño 12
-- Márgenes de 50px en todos los lados
-- Soporte para texto multilínea
+Modifica `templates/index.html` para alterar la estructura HTML.
 
-### Validaciones
+## 🐛 Solución de Problemas
 
-- Verificación de contenido vacío
-- Respuesta de error si no se proporciona texto
-
-### Interfaz de usuario
-
-- Diseño responsivo usando Bootstrap 5.3
-- Fondo con efecto de desenfoque (glassmorphism)
-- Tipografía moderna con fuente Poppins
-- Botones y elementos con sombras para mejor apariencia
-
-## Personalización
-
-### Modificar estilos
-
-Puedes editar el archivo `static/index.css` para cambiar los estilos visuales.
-
-### Cambiar configuración del PDF
-
-En `app.py`, dentro de la función `download_pdf()`, puedes modificar:
-
-- Tamaño de página: `pagesize=letter`
-- Fuente: `c.setFont("Helvetica", 12)`
-- Márgenes: `max_width = width - 100`
-- Posición inicial: `y = height - 50`
-
-## Solución de problemas comunes
-
-### ImportError: No module named flask
-
-Asegúrate de haber instalado Flask:
-
+### Error: "No module named flask"
 ```bash
 pip install flask
 ```
 
-### ImportError: No module named reportlab
-
-Asegúrate de haber instalado ReportLab:
-
+### Error: "No module named reportlab"
 ```bash
 pip install reportlab
 ```
 
-### TemplateNotFound: index.html
+### Error: "TemplateNotFound"
+Verifica que `templates/index.html` exista.
 
-Verifica que el archivo `index.html` exista en la carpeta `templates/`.
+### La aplicación no se actualiza
+- Detén la aplicación con `Ctrl+C`
+- Reinicia con `python app.py`
 
-### La aplicación no se actualiza después de hacer cambios
+## 🤝 Contribución
 
-Detén la aplicación (Ctrl+C) y reiníciala:
+1. Haz fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -am 'Agrega nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
-```bash
-python app.py
-```
+## 📝 Licencia
 
-## Desactivar el entorno virtual
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-Cuando termines de trabajar, desactiva el entorno virtual:
+## 👥 Autores
 
-```bash
-deactivate
-```
+- **Sebastian Ospina**
+- **Juan Garcia**
+- **Ricardo Vega**
+
+---
+
+**Grupo 1 - Universidad** 🐧 Hazlo por Mort
